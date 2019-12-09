@@ -1,7 +1,9 @@
 
-d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.csv").then(function(data) {
-  console.log(data[0]);
+d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.csv",function(d) {
+ console.log(d[0]);
 });
+
+
 var spacetime = d3.select('body');
 var width = 960,
     height = 500,
