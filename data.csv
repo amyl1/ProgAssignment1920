@@ -1,12 +1,3 @@
-# This file was produced by the NASA Exoplanet Archive  http://exoplanetarchive.ipac.caltech.edu,,
-# Fri Dec  6 04:04:19 2019,,
-#,,
-# User preference: *,,
-#,,
-# COLUMN pl_name:        Planet Name,,
-# COLUMN pl_orbsmax:     Orbit Semi-Major Axis [AU]),,
-# COLUMN pl_dens:        Planet Density [g/cm**3],,
-#,,
 pl_name,Radius oribt,pl_dens
 55 Cnc e,0.01544,6.4
 CoRoT-1 b,,0.38
