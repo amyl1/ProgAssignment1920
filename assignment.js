@@ -2,13 +2,14 @@ d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.c
   console.log(data[0]);
 });
 var spacetime = d3.select('body');
-var width = 960,
-    height = 500,
+var width = 900,
+    height = 800,
     radius = Math.min(width, height);
  
 var radii = {
-  "sun": radius / 8,
-  "earth": radius / 32
+  "sun": radius / 15,
+  "planetOrbit": radius / 2.5,
+  "planet": radius / 32,
 };
  
 // Space
@@ -25,8 +26,9 @@ svg.append("circle")
   .style("fill", "rgba(255, 204, 0, 1.0)");
 
 
-// Earth
+// Planet
 svg.append("circle")
-  .attr("class", "earth")
-  .attr("r", radii.earth)
+  .attr("class", "planet")
+  .attr("r", radii.planet)
+  .attr("transform", "translate(0," + -radii.planetOrbit + ")")
   .style("fill", "rgba(113, 170, 255, 1.0)");
