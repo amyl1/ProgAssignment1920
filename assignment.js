@@ -1,9 +1,6 @@
-
-d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.csv",function(d) {
- console.log(d[0]);
+d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.csv", function(data) {
+  console.log(data[0]);
 });
-
-
 var spacetime = d3.select('body');
 var width = 960,
     height = 500,
@@ -11,10 +8,7 @@ var width = 960,
  
 var radii = {
   "sun": radius / 8,
-  "earthOrbit": radius / 2.5,
-  "earth": radius / 32,
-  "moonOrbit": radius / 16,
-  "moon": radius / 96
+  "earth": radius / 32
 };
  
 // Space
@@ -35,5 +29,4 @@ svg.append("circle")
 svg.append("circle")
   .attr("class", "earth")
   .attr("r", radii.earth)
-  .attr("transform", "translate(0," + -radii.earthOrbit + ")")
   .style("fill", "rgba(113, 170, 255, 1.0)");
