@@ -1,5 +1,11 @@
+var properties = { "planRadii": [],
+                   "planDens":[]};
 d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.csv", function(data) {
-  console.log(data[0]);
+  data.forEach(function (d){
+  properties['planRadii']=+(d.Radius);
+  properties['planDens']=+(d.pl_dens);
+  return {properties};
+  });
 });
 var spacetime = d3.select('body');
 var width = 900,
