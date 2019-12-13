@@ -11,14 +11,18 @@ d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.c
   return {planRadii, planDens, orbRadii};
   });
   orbRadii.forEach(function(item){
-      var trans=item/Math.pow(2,0.5);
+    var angle=Math.random()*90;  
+    var transx=Math.cos(angle)*item;
+    var transy=Math.sin(angle)*item;
+      
       // Planet
       svg.append("circle")
       .attr("class", "planet")
       .attr("r", planRadii[count]*10)
-      .attr("transform", "translate("+ (sunRadii+(trans*1000))+"," + (sunRadii+(trans*1000))+ ")")
+      .attr("transform", "translate("+ (sunRadii+(transx*1000))+"," + (sunRadii+(transy*1000))+ ")")
       .style("fill", "rgba(0, 0, "+planDens[count]*100+",1.0)");
     count=count+1;
+
     });
 });
 
