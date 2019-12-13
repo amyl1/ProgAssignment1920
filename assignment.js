@@ -8,13 +8,14 @@ d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.c
   return {planRadii, planDens};
   });
   planRadii.forEach(function(item){
-    console.log(item);
+      var trans=item/Math.pow(2,0.5);
+      console.log(trans);
       // Planet
       svg.append("circle")
       .attr("class", "planet")
       .attr("r", radii.planet)
-      .attr("transform", "translate("+ Math.random()*950+"," + Math.random()*950+ ")")
-      .style("fill", "rgba("+planDens[count]+", "+planDens[count]+", "+planDens[count]+",1.0)");
+      .attr("transform", "translate("+ trans*1000+"," + trans*1000+ ")")
+      .style("fill", "rgba(0, 0, "+planDens[count]*100+",1.0)");
       console.log(planDens[count]);
     count=count+1;
     });
