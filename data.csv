@@ -1,4 +1,4 @@
-pl_name,pl_orbsmax,pl_radj,pl_dens
+pl_name,Orbradius,Radius,pl_dens
 55 Cnc e,0.01544,0.17,6.4
 CoRoT-10 b,0.1055,0.97,3.7
 CoRoT-11 b,0.0436,1.43,0.99
