@@ -1,5 +1,6 @@
 var planRadii = [];
 var planDens = [];
+var count =0;
 d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.csv", function(data) {
   data.forEach(function (d){
   planRadii.push(d.Radius);
@@ -8,13 +9,21 @@ d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.c
   });
   planRadii.forEach(function(item){
     console.log(item);
-  });
+      // Planet
+      svg.append("circle")
+      .attr("class", "planet")
+      .attr("r", radii.planet)
+      .attr("transform", "translate("+ Math.random()*950+"," + Math.random()*950+ ")")
+      .style("fill", "rgba("+planDens[count]+", "+planDens[count]+", "+planDens[count]+",1.0)");
+      console.log(planDens[count]);
+    count=count+1;
+    });
 });
 
 
 var spacetime = d3.select('body');
-var width = 900,
-    height = 800,
+var width = 1300,
+    height = 1000,
     radius = Math.min(width, height);
  
 var radii = {
@@ -37,10 +46,5 @@ svg.append("circle")
   .style("fill", "rgba(255, 204, 0, 1.0)");
 
 
-  // Planet
-    svg.append("circle")
-      .attr("class", "planet")
-      .attr("r", radii.planet)
-      .attr("transform", "translate(0," + -radii.planetOrbit + ")")
-      .style("fill", "rgba(113, 170, 255, 1.0)");
+
    
