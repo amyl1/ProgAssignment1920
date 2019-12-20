@@ -3,6 +3,7 @@ var planDens = [];
 var orbRadii = [];
 var count = 0;
 var sunRadii = 66;
+
 d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.csv", function(data) {
   data.forEach(function (d){
   planRadii.push(d.Radius);
