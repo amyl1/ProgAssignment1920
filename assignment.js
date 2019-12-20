@@ -21,7 +21,7 @@ d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.c
       .attr("class", "planet")
       .attr("r", planRadii[count]*10)
       .attr("transform", "translate("+ (sunRadii+(transx*1000))+"," + (sunRadii+(transy*1000))+ ")")
-      .style("fill", "rgba(0, 0, "+planDens[count]*100+",1.0)");
+      .style("fill", "rgba("+planDens[count]*100+","+planDens[count]*100+","+planDens[count]*100+",1.0)");
     count=count+1;
 
     });
