@@ -1,5 +1,31 @@
 var now = d3.time.year.floor(new Date());
- 
+var planRadii = [];
+var planDens = [];
+var orbRadii = [];
+var count = 0;
+var sunRadii = 66;
+d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.csv", function(data) {
+  data.forEach(function (d){
+  planRadii.push(d.Radius);
+  orbRadii.push(d.Orbradius);
+  planDens.push(d.pl_dens);
+  return {planRadii, planDens, orbRadii};
+  });
+  orbRadii.forEach(function(item){
+    var angle=Math.random()*90;  
+    var transx=Math.cos(angle)*item;
+    var transy=Math.sin(angle)*item;
+      
+      // Planet
+      svg.append("circle")
+      .attr("class", "planet")
+      .attr("r", planRadii[count]*10)
+      .attr("transform", "translate("+ (sunRadii+(transx*1000))+"," + (sunRadii+(transy*1000))+ ")")
+      .style("fill", "rgba("+planDens[count]*100+","+planDens[count]*100+","+planDens[count]*100+",1.0)");
+    count=count+1;
+
+    });
+});
 var spacetime = d3.select('body');
 var width = 960,
     height = 500,
@@ -53,7 +79,7 @@ var day = d3.svg.arc()
 setInterval(function () {
   now = new Date();
   
-  var interpolateEarthOrbitPosition = d3.interpolate(earthOrbitPosition.endAngle()(), (2 * Math.PI * d3.time.hours(d3.time.year.floor(now), now).length / d3.time.hours(d3.time.year.floor(now), d3.time.year.ceil(now)).length));
+  var interpolateEarthOrbitPosition = d3.interpolate(earthOrbitPosition.endAngle()(), (2 * Math.PI * Math.random(), 2 * Math.PI * Math.random()));
   
   var interpolateDay = d3.interpolate(day.endAngle()(), (2 * Math.PI * d3.time.seconds(d3.time.day.floor(now), now).length / d3.time.seconds(d3.time.day.floor(now), d3.time.day.ceil(now)).length));
   
