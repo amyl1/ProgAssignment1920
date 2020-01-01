@@ -36,9 +36,9 @@ d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.c
       svg.append("circle")
       .attr("class", "planet")
       .attr("r", planRadii[count]*7)
-      .attr("transform", "rotate("+angle+","+(sunRadii*Math.cos(angle)+(item*50))+","+(sunRadii*Math.sin(angle)+(item*50))+")")
       .transition()
-      .attr("transform", "translate("+transx*4+","+transy*4+")")
+      .attr("transform", "rotate("+angle+","+(sunRadii*Math.cos(angle)+(item*50))+","+(sunRadii*Math.sin(angle)+(item*50))+")")
+      .attr("transform", "translate("+transx*3.5+","+transy*3.5+")")
       .style("fill", "rgba("+planDens[count]*100+","+planDens[count]*100+","+planDens[count]*100+",1.0)");
     count=count+1;
 
@@ -48,7 +48,7 @@ d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.c
 
 var spacetime = d3.select('body');
 var width = 1000,
-    height = 700,
+    height = 600,
     radius = Math.min(width, height);
  
 
