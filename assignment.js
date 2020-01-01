@@ -12,12 +12,31 @@ d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.c
   return {planRadii, planDens, orbRadii};
   });
   orbRadii.forEach(function(item){
-    var angle=Math.random()*360;  
+    var angle=Math.random()*360;
+    if (angle<90){
+      var transx=(sunRadii*Math.cos(angle)+(item*500))
+      var transy=(sunRadii*Math.sin(angle)+(item*500))
+    }
+    else if (angle<180){
+      var transx=-(sunRadii*Math.cos(angle)+(item*500))
+      var transy=(sunRadii*Math.sin(angle)+(item*500))
+    }
+    else if (angle<270){
+      var transx=(sunRadii*Math.cos(angle)+(item*500))
+      var transy=-(sunRadii*Math.sin(angle)+(item*500))
+    }
+    else{
+      var transx=-(sunRadii*Math.cos(angle)+(item*500))
+      var transy=-(sunRadii*Math.sin(angle)+(item*500))
+    }
+    console.log(transx);
+    console.log(transy);
       // Planet
       svg.append("circle")
       .attr("class", "planet")
       .attr("r", planRadii[count]*7)
       .attr("transform", "rotate("+angle+","+(sunRadii*Math.cos(angle)+(item*50))+","+(sunRadii*Math.sin(angle)+(item*50))+")")
+      .attr("transform", "translate("+transx*4+","+transy*4+")")
       .style("fill", "rgba("+planDens[count]*100+","+planDens[count]*100+","+planDens[count]*100+",1.0)");
     count=count+1;
 
