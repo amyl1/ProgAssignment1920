@@ -13,14 +13,11 @@ d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.c
   });
   orbRadii.forEach(function(item){
     var angle=Math.random()*360;  
-    var transx=Math.cos(angle)*item;
-    var transy=Math.sin(angle)*item;
-      
       // Planet
       svg.append("circle")
       .attr("class", "planet")
-      .attr("r", planRadii[count]*10)
-      .attr("transform", "rotate("+angle+",100,100)")
+      .attr("r", planRadii[count]*7)
+      .attr("transform", "rotate("+angle+","+(sunRadii*Math.cos(angle)+(item*50))+","+(sunRadii*Math.sin(angle)+(item*50))+")")
       .style("fill", "rgba("+planDens[count]*100+","+planDens[count]*100+","+planDens[count]*100+",1.0)");
     count=count+1;
 
@@ -29,8 +26,8 @@ d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.c
 
 
 var spacetime = d3.select('body');
-var width = 1300,
-    height = 1000,
+var width = 1000,
+    height = 500,
     radius = Math.min(width, height);
  
 
