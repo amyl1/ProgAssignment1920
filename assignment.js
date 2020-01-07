@@ -37,7 +37,7 @@ d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.c
       .attr("class", "planet")
       .attr("cx",100)
       .attr("cy",75)
-      .attr("r", planRadii[count]*7)
+      .attr("r", planRadii[count]*5)
       .transition()
       .attr("transform", "translate("+transx+","+transy+")")
       .style("stroke","black")
