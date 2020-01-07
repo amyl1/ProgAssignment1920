@@ -2,7 +2,7 @@ var planRadii = [];
 var planDens = [];
 var orbRadii = [];
 var count = 0;
-var sunRadii = 50;
+var sunRadii = 10;
 var width = 1000,
     height = 600;
 d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.csv", function(data) {
@@ -14,16 +14,36 @@ d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.c
   });
   orbRadii.forEach(function(item){
     var angle=Math.random()*360;
+    if (angle<90){
+      var transx=((Math.sin(angle)*(item*5000))+100)
+      var transy=((Math.cos(angle)*(item*5000))+100)
+    }
+    else if (angle<180){
+      var transx=-((Math.sin(angle)*(item*5000))+100)
+      var transy=((Math.cos(angle)*(item*5000))+100)
+    }
+    else if (angle<270){
+      var transx=((Math.sin(angle)*(item*5000))+100)
+      var transy=-((Math.cos(angle)*(item*5000))+100)
+    }
+    else{
+      var transx=-((Math.sin(angle)*(item*5000))+100)
+      var transy=-((Math.cos(angle)*(item*5000))+100)
+    }
+    console.log(transx,transy);
       // Planet
 
       svg.append("circle")
       .attr("class", "planet")
+      .attr("cx",100)
+      .attr("cy",75)
       .attr("r", planRadii[count]*7)
       .transition()
-      .attr("transform", "rotate("+angle+",100,75)")
+      .attr("transform", "translate("+transx+","+transy+")")
       .style("stroke","black")
       .style("fill", "rgba("+planDens[count]*100+","+planDens[count]*100+","+planDens[count]*100+",0.5)");
-    count=count+1;
+      count=count+1;
+    
 
     });
 });
