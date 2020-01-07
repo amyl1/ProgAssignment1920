@@ -39,8 +39,9 @@ d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.c
       .attr("r", planRadii[count]*5)
       .transition()
       .attr("transform", "translate("+transx+","+transy+")")
-      .style("stroke","black")
-      .style("fill", "rgba("+planDens[count]*100+","+planDens[count]*100+","+planDens[count]*100+",0.5)");
+      .attr("stroke","white")
+      .attr("stroke-width", 0.5)
+      .style("fill", "rgba(0,0,"+planDens[count]*500+",1)");
       count=count+1;
     
 
@@ -62,4 +63,6 @@ svg.append("circle")
   .attr("r", sunRadii)
   .attr("cx",100)
   .attr("cy",75)
+  .attr("stroke","white")
+  .attr("stroke-width", 0.5)
   .style("fill", "rgba(255, 204, 0, 1.0)");

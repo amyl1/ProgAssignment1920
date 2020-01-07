@@ -3,8 +3,8 @@ body {
 	font-weight: 400;
 	font-family: 'Open Sans', sans-serif;
 	text-align: center;
-	vertical-align: middle;
-	background: #ffffff;
+    vertical-align: middle;
+    background: url(galaxy.jpg);
 	cursor: default;
 }		
 
