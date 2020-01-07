@@ -12,7 +12,7 @@ d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.c
   planDens.push(d.pl_dens);
   return {planRadii, planDens, orbRadii};
   });
-  orbRadii.forEach(function(item){
+  orbRadii.forEach(function populate(item){
     var angle=Math.random()*360;
     if (angle<90){
       var transx=((Math.sin(angle)*(item*5000))+100)
@@ -30,11 +30,10 @@ d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.c
       var transx=-((Math.sin(angle)*(item*5000))+100)
       var transy=-((Math.cos(angle)*(item*5000))+100)
     }
-    console.log(transx,transy);
       // Planet
 
       svg.append("circle")
-      .attr("class", "planet")
+      .attr("class", count)
       .attr("cx",100)
       .attr("cy",75)
       .attr("r", planRadii[count]*5)
@@ -47,7 +46,6 @@ d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.c
 
     });
 });
-
 
 var spacetime = d3.select('body');
 
@@ -65,7 +63,3 @@ svg.append("circle")
   .attr("cx",100)
   .attr("cy",75)
   .style("fill", "rgba(255, 204, 0, 1.0)");
-
-
-
-   
