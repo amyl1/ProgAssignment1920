@@ -3,7 +3,8 @@ var planDens = [];
 var orbRadii = [];
 var count = 0;
 var sunRadii = 50;
-
+var width = 1000,
+    height = 600;
 d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.csv", function(data) {
   data.forEach(function (d){
   planRadii.push(d.Radius);
@@ -13,33 +14,15 @@ d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.c
   });
   orbRadii.forEach(function(item){
     var angle=Math.random()*360;
-    if (angle<90){
-      var transx=(sunRadii*Math.cos(angle)+(item*500))
-      var transy=(sunRadii*Math.sin(angle)+(item*500))
-    }
-    else if (angle<180){
-      var transx=-(sunRadii*Math.cos(angle)+(item*500))
-      var transy=(sunRadii*Math.sin(angle)+(item*500))
-    }
-    else if (angle<270){
-      var transx=(sunRadii*Math.cos(angle)+(item*500))
-      var transy=-(sunRadii*Math.sin(angle)+(item*500))
-    }
-    else{
-      var transx=-(sunRadii*Math.cos(angle)+(item*500))
-      var transy=-(sunRadii*Math.sin(angle)+(item*500))
-    }
-    console.log(transx);
-    console.log(transy);
       // Planet
 
       svg.append("circle")
       .attr("class", "planet")
       .attr("r", planRadii[count]*7)
       .transition()
-      .attr("transform", "rotate("+angle+","+(sunRadii*Math.cos(angle)+(item*50))+","+(sunRadii*Math.sin(angle)+(item*50))+")")
-      .attr("transform", "translate("+transx*3.5+","+transy*3.5+")")
-      .style("fill", "rgba("+planDens[count]*100+","+planDens[count]*100+","+planDens[count]*100+",1.0)");
+      .attr("transform", "rotate("+angle+",100,75)")
+      .style("stroke","black")
+      .style("fill", "rgba("+planDens[count]*100+","+planDens[count]*100+","+planDens[count]*100+",0.5)");
     count=count+1;
 
     });
@@ -47,12 +30,7 @@ d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.c
 
 
 var spacetime = d3.select('body');
-var width = 1000,
-    height = 600,
-    radius = Math.min(width, height);
- 
 
- 
 // Space
 var svg = spacetime.append("svg")
   .attr("width", width)
@@ -64,6 +42,8 @@ var svg = spacetime.append("svg")
 svg.append("circle")
   .attr("class", "sun")
   .attr("r", sunRadii)
+  .attr("cx",100)
+  .attr("cy",75)
   .style("fill", "rgba(255, 204, 0, 1.0)");
 
 
