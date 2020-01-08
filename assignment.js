@@ -35,7 +35,7 @@ d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.c
       // Planet
 
       svg.append("circle")
-      .attr("class", planName[count])
+      .attr("class", "planet")
       .attr("cx",100)
       .attr("cy",75)
       .attr("r", planRadii[count]*5)
@@ -46,6 +46,7 @@ d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.c
       .style("fill", "rgba("+planDens[count]*10+","+planDens[count]*100+","+planDens[count]*1000+",1)");
       count=count+1;
     });
+    
 });
 
 var spacetime = d3.select('body');
@@ -66,8 +67,3 @@ svg.append("circle")
   .attr("stroke","white")
   .attr("stroke-width", 0.5)
   .style("fill", "rgba(255, 204, 0, 1.0)");
-
-  document.getElementById(planName[count]).addEventListener("click", addInfo);
-  function addInfo(){
-    document.getElementById
-  }
