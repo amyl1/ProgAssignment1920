@@ -1,12 +1,14 @@
+var planName=[];
 var planRadii = [];
 var planDens = [];
 var orbRadii = [];
 var count = 0;
 var sunRadii = 10;
-var width = 1000,
-    height = 600;
+var width = 1000;
+var height = 600;
 d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.csv", function(data) {
   data.forEach(function (d){
+  planName.push(d.pl_Name);
   planRadii.push(d.Radius);
   orbRadii.push(d.Orbradius);
   planDens.push(d.pl_dens);
@@ -33,7 +35,7 @@ d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.c
       // Planet
 
       svg.append("circle")
-      .attr("class", count)
+      .attr("class", planName[count])
       .attr("cx",100)
       .attr("cy",75)
       .attr("r", planRadii[count]*5)
@@ -41,10 +43,8 @@ d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.c
       .attr("transform", "translate("+transx+","+transy+")")
       .attr("stroke","white")
       .attr("stroke-width", 0.5)
-      .style("fill", "rgba(0,0,"+planDens[count]*500+",1)");
+      .style("fill", "rgba("+planDens[count]*10+","+planDens[count]*100+","+planDens[count]*1000+",1)");
       count=count+1;
-    
-
     });
 });
 
@@ -66,3 +66,8 @@ svg.append("circle")
   .attr("stroke","white")
   .attr("stroke-width", 0.5)
   .style("fill", "rgba(255, 204, 0, 1.0)");
+
+  document.getElementById(planName[count]).addEventListener("click", addInfo);
+  function addInfo(){
+    document.getElementById
+  }
