@@ -7,7 +7,3 @@ body {
     background: url(galaxy.jpg);
 	cursor: default;
 }		
-table, td{
-    background-color: aliceblue;
-    border: 1px solid black;
-}
