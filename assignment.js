@@ -62,7 +62,16 @@ svg.append("circle")
       .attr("stroke","white")
       .attr("stroke-width", 0.5)
       .style("fill", function(d){return "rgba(0,"+(d.pl_dens*100)+","+(d.pl_dens*100)+",1)";});
-      svg.on("click",function(){
-        alert("Hello");
+      svg.on("mouseover",function(){
+        svg.append("text").data(dataset)
+        .attr({
+          fill: "white",
+          id: "t"+function(d) {return (d.pl_name)},
+          x: 0,
+          y: 0
+        })
+      .text(function(d){
+        return (d.pl_name);
+      });
       })
     });
