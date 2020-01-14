@@ -80,14 +80,20 @@ function setup(){
         .attr("transform", function Transform(d) { return "translate("+d.transx+","+d.transy+")"})
         .attr("fill", function gen_Colour(d){return "rgba(0,"+(d.pl_dens*100)+","+(d.pl_dens*100)+",1)";})
         .on("mouseover", function(d) {		
-          console.log(d.pl_name);
-          document.getElementById("info").innerHTML=(d.pl_name);
+          div.transition()		
+                .duration(200)		
+                .style("opacity", .9);		
+            div	.html(d.pl_name)	
+                .style("left", (d3.event.pageX) + "px")		
+                .style("top", (d3.event.pageY - 28) + "px");
         })
           			
-      .on("mouseout", function(d) {		
-        document.getElementById("info").innerHTML="Planet Name: "});
+      .on("mouseout", function(d) {	
+        div.transition()		
+                .duration(500)		
+                .style("opacity", 0);		
       })
 
-      };
+      });
+    }
    setup() 
-      
