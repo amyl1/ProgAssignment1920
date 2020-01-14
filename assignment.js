@@ -1,6 +1,6 @@
 var sunRadii = 10;
-var width = 1000;
-var height = 750;
+var width = screen.width;
+var height = screen.height;
 var dataset=[];
 var radius=10;
 
@@ -58,14 +58,16 @@ svg.append("circle")
       .append("circle")
       .attr("cx",100)
       .attr("cy",75)
-      //.attr("class",function (d) { return (d.pl_name);})
       .attr("r", function Calc_Radii(d) { return (d.Radius)*5;})
+      .attr("id", function(d, i) { return dataset[i].pl_name;})
       .transition()
       .attr("transform", function Transform(d) { return "translate("+d.transx+","+d.transy+")"})
       .attr("stroke","white")
       .attr("stroke-width", 0.5)
       .style("fill", function gen_Colour(d){return "rgba(0,"+(d.pl_dens*100)+","+(d.pl_dens*100)+",1)";});
-      svg.on("mouseover",function handleMouseOver(d, name){
+      svg.on("mouseover",function handleMouseOver(d, i){
+        d3.select(this)
+          .style("fill","red");
         svg.append("text")
         .attr({
           fill: "white",
@@ -75,12 +77,12 @@ svg.append("circle")
         })
         
       .text(function gen_text(d,i){
-        return (dataset[i].pl_name);
-        
+        var name = function gen_Name(d,i){return (data[i].pl_name);}
+        document.getElementById("info").innerHTML=(name);     
       });
 
       })
       .on("mouseout",function handleMouseOut(d){
-        svg.select("#t").remove();
+        document.getElementById("info").innerHTML=("Planet Name:"); 
       })
     });
