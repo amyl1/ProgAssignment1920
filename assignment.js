@@ -1,8 +1,9 @@
 var sunRadii = 10;
 var width = 1000;
-var height = 600;
+var height = 750;
 var dataset=[];
 var radius=10;
+
 d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.csv", function(data) {
    
 var spacetime = d3.select('body');
@@ -22,10 +23,10 @@ svg.append("circle")
   .attr("stroke","white")
   .attr("stroke-width", 0.5)
   .style("fill", "rgba(255, 204, 0, 1.0)");
-    things = []
+    dataset = []
           //Populate things (your "dataset" variable that I didn't see) with properties of each planet
 
-  data.forEach(function populate(d){
+  data.forEach(function GenerateTransVar(d){
       //For each planet, work out properties and add to the list of planets
     var angle=Math.random()*360;
     if (angle<90){
@@ -46,7 +47,8 @@ svg.append("circle")
     }
     d.transx = transx;
     d.transy = transy;
-
+    var name = d.pl_name;
+    d.name = name;
     dataset.push(d);
 });
       // Add planets to svg
@@ -56,22 +58,29 @@ svg.append("circle")
       .append("circle")
       .attr("cx",100)
       .attr("cy",75)
-      .attr("r", function (d) { return (d.Radius)*5;})
+      //.attr("class",function (d) { return (d.pl_name);})
+      .attr("r", function Calc_Radii(d) { return (d.Radius)*5;})
       .transition()
-      .attr("transform", function(d) { return "translate("+d.transx+","+d.transy+")"})
+      .attr("transform", function Transform(d) { return "translate("+d.transx+","+d.transy+")"})
       .attr("stroke","white")
       .attr("stroke-width", 0.5)
-      .style("fill", function(d){return "rgba(0,"+(d.pl_dens*100)+","+(d.pl_dens*100)+",1)";});
-      svg.on("mouseover",function(){
-        svg.append("text").data(dataset)
+      .style("fill", function gen_Colour(d){return "rgba(0,"+(d.pl_dens*100)+","+(d.pl_dens*100)+",1)";});
+      svg.on("mouseover",function handleMouseOver(d, name){
+        svg.append("text")
         .attr({
           fill: "white",
-          id: "t"+function(d) {return (d.pl_name)},
-          x: 0,
-          y: 0
+          id: "t",
+          cx: 0,
+          cy: 0
         })
-      .text(function(d){
-        return (d.pl_name);
+        
+      .text(function gen_text(d,i){
+        return (dataset[i].pl_name);
+        
       });
+
+      })
+      .on("mouseout",function handleMouseOut(d){
+        svg.select("#t").remove();
       })
     });
