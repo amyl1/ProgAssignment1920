@@ -7,3 +7,8 @@ body {
     background: url(galaxy.jpg);
 	cursor: default;
 }		
+p{
+	background-color: white;
+	width: 25%;
+	height: 10%;
+}
