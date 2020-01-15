@@ -83,26 +83,10 @@ d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.c
         .enter()
         .append("circle")
         .attr(circleAttr)
-        .transition()
-        /**
-         * @function Transform
-         * @param d The data from the csv
-         * @description Transforms the planets from the sun, based on the traslation variables calcualted in the GenTransform function.
-         */
-        .attr("transform", function Transform(d) 
-        { return "translate("+d.transx+","+d.transy+")"})
-        /**
-         * @function genColour
-         * @param d The data from the csv
-         * @description Sets the colour of the planet based on its density. The darker the colour in the visualisation, the more dense the planet is.
-         */
-        .attr("fill", function genColour(d){return "rgba(0,"+(d.pl_dens*100)+","+(d.pl_dens*100)+",1)";})
-                /**
-         * @function showTooltip
-         * @param d The data from the csv
-         * @description Creates a tooltip, containing the name of the planet that the circle represents, when the mouse is hovered over the object.
-         */
-        .on("mouseover", function showTooltip(d) {		
+        //.transition()
+        .attr("transform", function Transform(d) { return "translate("+d.transx+","+d.transy+")"})
+        .attr("fill", function gen_Colour(d){return "rgba(0,"+(d.pl_dens*100)+","+(d.pl_dens*100)+",1)";})
+        .on("mouseover", function(d) {		
           div.transition()		
                 .duration(200)		
                 .style("opacity", .9);		
@@ -110,15 +94,11 @@ d3.csv("https://raw.githubusercontent.com/amyl1/ProgAssignment1920/master/data.c
                 .style("left", (d3.event.pageX) + "px")		
                 .style("top", (d3.event.pageY - 28) + "px");
         })
-              /**
-         * @function hideTooltip
-         * @description Removes the description when the mouse is moved from over the planet.
-         */    			
-      .on("mouseout", function hideTooltip() {	
+          			
+      .on("mouseout", function() {	
         div.transition()		
                 .duration(500)		
                 .style("opacity", 0);		
       })
 
       });
- 
